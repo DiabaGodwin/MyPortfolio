@@ -1,0 +1,218 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Based on this YouTube tutorial by Muhammad Irshad of Online Tutorials -->
+    <!-- https://www.youtube.com/watch?v=ArTVfdHOB-M -->
+    <template>
+        <nav class="menu" id="app">
+            <ul>
+                <li class="list" v-for="(item, idx) in list" :key="idx" :class="{ active: selected === idx }"
+                    @click="setState(idx)">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon :name="item.icon"></ion-icon>
+                        </span>
+                        <span class="text">{{ item.title }}</span>
+                    </a>
+                </li>
+                <div class="indicator"></div>
+            </ul>
+        </nav>
+    </template>
+
+    <script>
+        export default {
+            data() {
+                return {
+                    list: [
+                        {
+                            title: "Home",
+                            icon: "home-outline"
+                        },
+                        {
+                            title: "Search",
+                            icon: "search-outline"
+                        },
+                        {
+                            title: "Messages",
+                            icon: "chatbubble-outline"
+                        },
+                        {
+                            title: "Likes",
+                            icon: "heart-outline"
+                        },
+                        {
+                            title: "Profile",
+                            icon: "person-outline"
+                        }
+                    ],
+                    selected: 0
+                };
+            },
+            methods: {
+                setState(idx) {
+                    this.selected = idx;
+                }
+            }
+        };
+    </script>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bkg: #292c2c;
+            --white: #eeeeee;
+            --accent: #0cbcd3;
+            --easing: 0.6s cubic-bezier(0.3, -0.01, 0.06, 1);
+        }
+
+        body {
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            background-color: var(--bkg);
+            font-family: "Poppins", sans-serif;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .menu {
+            width: 400px;
+            height: 70px;
+            background-color: var(--white);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .menu ul {
+            width: 350px;
+            margin: 0 auto;
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            justify-items: center;
+        }
+
+        .menu ul li {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            z-index: 1;
+        }
+
+        .menu ul li a {
+            height: 100%;
+            display: grid;
+            place-items: center;
+        }
+
+        .menu ul li a .icon {
+            position: relative;
+            display: block;
+            line-height: 75px;
+            font-size: 1.5rem;
+            text-align: center;
+            color: var(--bkg);
+            transition: var(--easing);
+        }
+
+        .menu ul li.active a .icon {
+            transform: translateY(-35px);
+        }
+
+        .menu ul li a .text {
+            position: absolute;
+            font-size: 0.75rem;
+            color: var(--bkg);
+            transition: var(--easing);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .menu ul li.active a .text {
+            opacity: 1;
+            transform: translateY(14px);
+        }
+
+        .menu ul li:nth-child(v-bind(1)).active~.indicator {
+            transform: translateX(calc(70px * v-bind(0)));
+        }
+
+        .menu ul li:nth-child(2).active~.indicator {
+            transform: translateX(calc(70px * 1));
+        }
+
+        .menu ul li:nth-child(3).active~.indicator {
+            transform: translateX(calc(70px * 2));
+        }
+
+        .menu ul li:nth-child(4).active~.indicator {
+            transform: translateX(calc(70px * 3));
+        }
+
+        .menu ul li:nth-child(5).active~.indicator {
+            transform: translateX(calc(70px * 4));
+        }
+
+        .indicator {
+            position: absolute;
+            top: -50%;
+            left: 0;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 6px solid var(--bkg);
+            background: var(--accent);
+            transition: var(--easing);
+        }
+
+        .indicator::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -22px;
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -10px 0 0 var(--bkg);
+        }
+
+        .indicator::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -22px;
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            border-top-left-radius: 20px;
+            box-shadow: 0 -10px 0 0 var(--bkg);
+        }
+    </style>
+
+</body>
+
+</html>

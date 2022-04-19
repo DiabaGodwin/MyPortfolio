@@ -1,0 +1,68 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    border: 0rem;
+}
+ 
+.bioContainer{
+    height: 95vh;
+    background-color: rgb(2, 26, 2);
+    position: relative;
+    border-radius: .5rem;
+}
+
+.pronoun{
+    position: absolute;
+    font-size: 1rem;
+    display: block;
+    color: rgb(250, 250, 250);
+    top: 39%;
+    left: 3rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+.name{
+    position: absolute;
+    font-size: 1.5rem;
+    display: block;
+    top: 45%;
+    color: white;
+    left: 3rem;
+    font-family: 'Courier New', Courier, monospace;
+    border-left: 2px solid white;
+}
+
+.pages{
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 3rem;
+}
+
+.pages-link{
+    text-decoration: none;
+    margin-right: 4rem;
+    color: white;
+    font-family: 'Trebuchet MS', 
+    'Lucida Sans Unicode', 
+    'Lucida Grande', 'Lucida Sans',
+     Arial, sans-serif;
+     font-size: 0.8rem;
+}
+
+.pages-link:hover{
+    border-bottom: 2px solid rgb(5, 99, 25);
+   
+}
+
+.li-tags{
+    color: transparent;
+}
+.image1{
+    height: 29rem;
+    width: 20rem;
+    position: absolute;
+    top: 15%;
+    right: 5rem;
+    border-radius: 1rem;
+    border: .3rem solid rgb(5, 99, 25);
+}
